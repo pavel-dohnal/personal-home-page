@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="robots" content="{$robots}" n:ifset="$robots">
+
+	<title>{block title|striptags|upper}Personal Home Page{/block}</title>
+
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/bootstrap.css">
+	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	{block head}{/block}
+	<style>
+		.stick-head{ width:100%;height:50px;background:#444;color:white;border-bottom:4px solid #CC0;font-weight:bold;font-size:1.5em;}
+		.user{ margin-right:40px;}
+		.logo{ margin-left:40px;}
+		.block{ height:400px;width:400px;border:1px solid black;margin:10px;}
+		.block-body{ overflow-y:scroll;}
+	</style>
+</head>
+<body>
+
+	<div class="stick-head">
+		<div class="logo pull-left">
+			Personal Home Page
+		</div>
+		<div class="user pull-right">
+			John Doe
+		</div>
+	</div>
+
+	<div class="content">
+		<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+
+<div class="block">
+	<div class="block-head">
+		<div class="block-title">
+			Idnes
+		</div>
+		<div class="block-settings"></div>			
+		<div class="block-close"></div>			
+	</div>
+	<div class="block-body">
+		<div class="block-row">
+			<div class="row-title">
+				<a href="">Clanek clanek</a>
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+		<div class="block-row">
+			<div class="row-title">
+				Clanek clanek
+			</div>
+			<div clas="row-body">
+				The benefit of Doctrine for the programmer is the ability to focus on the object-oriented business logic and worry about persistence only as a secondary problem. This doesn’t mean persistence is downplayed by Doctrine 2, however it is our belief that there are considerable benefits for object-oriented programming if persistence and entities are kept separated.
+			</div>
+		</div>
+	</div>
+</div>
+
+		{include #content}
+	</div>
+</body>
+</html>
