@@ -34,7 +34,7 @@ $container = $configurator->createContainer();
 function xcv($var, $title = '', $maxDepth = 3, $maxLength = 400)
 {
 	\Nette\Diagnostics\Debugger::$maxDepth = $maxDepth;
-	\Nette\Diagnostics\Debugger::$maxLength = $maxLength;
+	\Nette\Diagnostics\Debugger::$maxLen = $maxLength;
 	\Nette\Diagnostics\Debugger::barDump($var, $title);
 }
 
