@@ -2,7 +2,7 @@
 /**
 * @Entity @Table(name="users")
 */
-class User
+class User implements \Nette\Security\IIdentity
 {
 
 	/**
@@ -86,6 +86,14 @@ class User
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getPassword()
+	{
+		return $this->password;
+	}
+
+	/**
 	 * @return DateTime
 	 */
 	public function getCreated()
@@ -99,5 +107,14 @@ class User
 	public function getUpdated()
 	{
 		return $this->updated;
+	}
+
+	/**
+	 * Returns a list of roles that the user is a member of.
+	 * @return array
+	 */
+	public function getRoles()
+	{
+		return []; //we don't use roles in this project
 	}
 }

@@ -1,0 +1,5 @@
+services:
+
+	passwordService: PasswordService
+
+	userFacade: UserFacade(@entityManager)

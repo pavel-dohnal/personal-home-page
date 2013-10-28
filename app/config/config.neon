@@ -13,6 +13,9 @@ common:
 			dbname: personal-home-page
 		debugMode: true
 
+	includes:
+		- ../model/User/user.neon
+
 	php:
 		date.timezone: Europe/Prague
 		# zlib.output_compression: yes
@@ -26,7 +29,7 @@ common:
 
 
 	services:
-		authenticator: Authenticator(@entityManager)
+		authenticator: Authenticator(@userFacade)
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
 		entityManager:
