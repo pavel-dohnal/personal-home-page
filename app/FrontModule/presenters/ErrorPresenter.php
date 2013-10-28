@@ -1,7 +1,8 @@
 <?php
 
-use Nette\Diagnostics\Debugger;
+namespace FrontModule;
 
+use Nette\Diagnostics\Debugger;
 
 /**
  * Error presenter.
