@@ -26,6 +26,6 @@
 		"doctrine/orm": "2.4.*"
 	},
 	"require-dev": {
-		"nette/tester": "0.9.*"
+		"phpunit/phpunit": "3.7.*"
 	}
 }

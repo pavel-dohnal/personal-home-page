@@ -2,13 +2,6 @@
 
 require __DIR__ . '/../libs/autoload.php';
 
-if (!class_exists('Tester\Assert')) {
-	echo "Install Nette Tester using `composer update --dev`\n";
-	exit(1);
-}
-
-Tester\Environment::setup();
-
 function id($val) {
 	return $val;
 }

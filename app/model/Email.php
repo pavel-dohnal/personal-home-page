@@ -15,7 +15,8 @@ class Email
 	 */
 	public function __construct($emailAddress)
 	{
-		if $this->isValid($emailAddress) {
+		$emailAddress = trim($emailAddress);
+		if ($this->isValid($emailAddress)) {
 			$this->emailAddress = $emailAddress;
 		} else {
 			throw new EEmailValidation('Email address ' . $emailAddress . ' is not valid.');
@@ -29,7 +30,7 @@ class Email
 	 */
 	private function isValid($emailAddress)
 	{
-		return preg_match('/\S+@\S+/', $emailAddress);
+		return preg_match('/^\S+@\S+$/', $emailAddress);
 	}
 
 	public function __toString()
