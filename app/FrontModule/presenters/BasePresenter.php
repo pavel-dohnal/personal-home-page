@@ -8,9 +8,14 @@ namespace FrontModule;
 abstract class BasePresenter extends \Nette\Application\UI\Presenter
 {
 
-	public function createComponentUserInfo()
+	public function beforeRender()
 	{
-		
+		$this->template->user = $this->getUser();
+	}
+
+	public function createComponentUserInfo($name)
+	{
+		return new \FrontModule\UserInfo($this, $name);
 	}
 
 }
