@@ -6,6 +6,12 @@
 #
 common:
 	parameters:
+		database:
+			driver: pdo_mysql
+			user: global-settings-should-be-overwritten
+			password: global-settings-should-be-overwritten
+			dbname: personal-home-page
+		debugMode: true
 
 	php:
 		date.timezone: Europe/Prague
@@ -15,24 +21,33 @@ common:
 		application:
 			errorPresenter: Error
 
-		database:
-			dsn: 'mysql:host=localhost;dbname=test'
-			user:
-			password:
-
 		session:
-			expiration: 14 days
+			expiration: 356 days
 
 
 	services:
-		authenticator: Authenticator
+		authenticator: Authenticator(@entityManager)
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
+		entityManager:
+			factory: EntityManagerFactory::create(%database%, %debugMode%)
 
 
 	factories:
 
 
 production < common:
+	parameters:
+		debugMode: false
 
 development < common:
+
+	parameters:
+		debugMode: true
+		database:
+			driver: pdo_mysql
+			user: root
+			password: 
+			dbname: personal-home-page
+
+

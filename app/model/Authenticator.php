@@ -24,7 +24,7 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 
 	private $entityManager;
 
-	public function __construct($entityManager)
+	public function __construct(\Doctrine\ORM\EntityManager $entityManager)
 	{
 		$this->entityManager = $entityManager;
 	}
@@ -39,17 +39,17 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 		list($username, $password) = $credentials;
 
 	
-		if (!$row) {
-			throw new Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
-		}
+		// if (!$row) {
+		// 	throw new Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
+		// }
 
-		if ($row->password !== $this->calculateHash($password, $row->password)) {
-			throw new Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
-		}
+		// if ($row->password !== $this->calculateHash($password, $row->password)) {
+		// 	throw new Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
+		// }
 
-		$arr = $row->toArray();
-		unset($arr['password']);
-		return new Nette\Security\Identity($row->id, $row->role, $arr);
+		// $arr = $row->toArray();
+		// unset($arr['password']);
+		// return new Nette\Security\Identity($row->id, $row->role, $arr);
 	}
 
 }

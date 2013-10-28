@@ -22,8 +22,8 @@
 		"nette/nette": ">= 2.0.7",
 		"dg/adminer-custom": "1",
 		"doctrine/common": "2.4.*",
-        "doctrine/dbal": "2.4.*",
-        "doctrine/orm": "2.4.*"
+		"doctrine/dbal": "2.4.*",
+		"doctrine/orm": "2.4.*"
 	},
 	"require-dev": {
 		"nette/tester": "0.9.*"

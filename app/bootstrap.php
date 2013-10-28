@@ -24,4 +24,18 @@ $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon', $configurator::NONE); // none section
 $container = $configurator->createContainer();
 
+/**
+ * Dumps information about a variable in Nette Debug Bar.
+ * @param mixed $var variable to dump
+ * @param string $title optional title
+ * @param int $maxDepth maximum dumped depth of array and objects. Increasing this variable has huge impact on performance.
+ * @param int $maxLength maximum length of strings
+ */
+function xcv($var, $title = '', $maxDepth = 3, $maxLength = 400)
+{
+	\Nette\Diagnostics\Debugger::$maxDepth = $maxDepth;
+	\Nette\Diagnostics\Debugger::$maxLength = $maxLength;
+	\Nette\Diagnostics\Debugger::barDump($var, $title);
+}
+
 return $container;
