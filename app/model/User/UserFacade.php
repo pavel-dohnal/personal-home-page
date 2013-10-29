@@ -22,4 +22,13 @@ class UserFacade
 		return $this->entityManager->getRepository('User')->findOneByEmail($emailAddress);
 	}
 
+	/**
+	 * @param \User $user
+	 */
+	public function save(\User $user)
+	{
+		$this->entityManager->persist($user);
+		$this->entityManager->flush();
+	}
+
 }

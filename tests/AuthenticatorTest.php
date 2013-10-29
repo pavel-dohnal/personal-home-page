@@ -27,7 +27,7 @@ class AuthenticatorTest extends PHPUnit_Framework_TestCase
 
 	/**
 	 * @expectedException \Nette\Security\AuthenticationException
-	 * @expectedExceptionMessage The username is incorrect.
+	 * @expectedExceptionMessage The email address is incorrect.
 	 * @expectedExceptionCode 1
 	 */
 	public function testAuthenticateWithUnknownUser()

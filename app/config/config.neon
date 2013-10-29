@@ -25,7 +25,7 @@ common:
 			errorPresenter: Error
 
 		session:
-			expiration: 356 days
+			expiration: 2 years
 
 
 	services:

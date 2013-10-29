@@ -1,5 +1,5 @@
 {if $user->isLoggedIn()}
 	<a href="">todo-user-icon {if $user->getName()}$user->getName(){/if}</a>
 {else}
-	<a href="">sign in</a>
+	<a href="{plink :Front:Sign:in}">sign in</a>
 {/if}

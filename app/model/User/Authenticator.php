@@ -34,7 +34,7 @@ class Authenticator extends Nette\Object implements \Nette\Security\IAuthenticat
 		$user = $this->userFacade->loadByEmailAddress($emailAddress);
 	
 		if (!$user) {
-			throw new \Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
+			throw new \Nette\Security\AuthenticationException('The email address is incorrect.', self::IDENTITY_NOT_FOUND);
 		}
 
 		if (!$this->passwordService->validate($password, $user->getPassword())) {
