@@ -10,10 +10,21 @@ class SignUpForm extends \Nette\Application\UI\Control
 	 */
 	private $signUpService;
 
-	public function __construct(\SignUpService $signUpService, \Nette\ComponentModel\IComponent $parent = NULL, $name = NULL)
+	/**
+	 * @var \SignInService
+	 */
+	private $signInService;
+
+	public function __construct(
+		\SignUpService $signUpService, 
+		\SignInService $signInService, 
+		\Nette\ComponentModel\IComponent $parent = NULL, 
+		$name = NULL
+	)
 	{
 		parent::__construct($parent, $name);
 		$this->signUpService = $signUpService;
+		$this->signInService = $signInService;
 	}
 
 	public function render()
@@ -47,6 +58,8 @@ class SignUpForm extends \Nette\Application\UI\Control
 			->setRequired('Please retype your password.')
 			->addRule(\Nette\Forms\Form::EQUAL, 'Passwords don\'t match.', $form['password']);
 
+		$form->addCheckbox('remember', 'Keep me signed in');
+
 		$form->addSubmit('send', 'Sign up');
 
 		$form->onSuccess[] = $this->signUpFormSucceeded;
@@ -58,10 +71,12 @@ class SignUpForm extends \Nette\Application\UI\Control
 		$values = $form->getValues();
 
 		try {
-			$error = $this->signUp($values);
-			//TODO sign in & redirect to HP
-			$this->presenter->redirect(':Front:Sign:in');
+			$this->signUpService->signUp($values);
+			$this->signInService->signIn($values, $this->presenter->getUser());
+			$this->presenter->redirect(':Front:Homepage:default');
 		} catch (\ESignUp $e) {
+			$form->addError($e->getMessage());
+		} catch (\Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
 	}

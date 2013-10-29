@@ -29,6 +29,7 @@ class SignUpService
 	 */
 	public function signUp(\Nette\ArrayHash $formValues)
 	{
+		$this->checkInputParams($formValues);
 		$this->checkUserExists($formValues->email);		
 		try {
 			$newUser = $this->createUser($formValues);
@@ -55,6 +56,18 @@ class SignUpService
 			$newUser->setName($formValues->name);
 		}
 		return $newUser;
+	}
+
+	private function checkInputParams(\Nette\ArrayHash $formValues)
+	{
+		if (
+			!isset($formValues->email) 
+			|| !isset($formValues->password)
+			|| !isset($formValues->name)
+		) {
+			throw new \InvalidArgumentException('Missing required input parameter.');
+		}
+
 	}
 
 }

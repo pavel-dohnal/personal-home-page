@@ -26,6 +26,16 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * @expectedException \InvalidArgumentException
+	 */
+	public function testCallWithInvalidData()
+	{
+		$this->signUpService->signUp(\Nette\ArrayHash::from([
+			'email' => 'asdf@asd.sd', 
+		]));
+	}
+
+	/**
 	 * @expectedException \ESignUp
 	 * @expectedExceptionMessage A user already exists with this email address
 	 */
@@ -46,6 +56,7 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 		$this->signUpService->signUp(\Nette\ArrayHash::from([
 			'email' => $emailAddress, 
 			'password' => $password,
+			'name' => '',
 		]));
 	}
 
@@ -68,6 +79,7 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 		$this->signUpService->signUp(\Nette\ArrayHash::from([
 			'email' => $emailAddress, 
 			'password' => $password,
+			'name' => '',
 		]));
 	}
 

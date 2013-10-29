@@ -4,8 +4,17 @@ namespace FrontModule;
 
 class SignInForm extends \Nette\Application\UI\Control
 {
-	const SIGN_EXPIRATION = '20 minutes';
-	const SIGN_FOREVER_EXPIRATION = '1 year';
+
+	/**
+	 * @var \SignInService
+	 */
+	private $signInService;
+
+	public function __construct(\SignInService $signInService, \Nette\ComponentModel\IComponent $parent = NULL, $name = NULL)
+	{
+		parent::__construct($parent, $name);
+		$this->signInService = $signInService;
+	}
 
 	public function render()
 	{
@@ -43,19 +52,11 @@ class SignInForm extends \Nette\Application\UI\Control
 	public function signInFormSucceeded($form)
 	{
 		$values = $form->getValues();
-		//TODO sign in logic to service
-		if ($values->remember) {
-			$this->presenter->getUser()->setExpiration(self::SIGN_FOREVER_EXPIRATION, FALSE);
-		} else {
-			$this->presenter->getUser()->setExpiration(self::SIGN_EXPIRATION, TRUE);
-		}
-
 		try {
-			$this->presenter->getUser()->login($values->email, $values->password);
-			$this->redirect(':Front:Homepage:default');
+			$this->signInService->signIn($values, $this->presenter->getUser());
+			$this->presenter->redirect(':Front:Homepage:default');
 		} catch (\Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}
 	}
-
 }

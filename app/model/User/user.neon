@@ -3,3 +3,7 @@ services:
 	passwordService: PasswordService
 
 	userFacade: UserFacade(@entityManager)
+
+	signUpService: SignUpService(@userFacade, @passwordService)
+
+	signInService: SignInService

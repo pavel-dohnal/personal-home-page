@@ -16,13 +16,18 @@ class SignPresenter extends BasePresenter
 
 	protected function createComponentSignInForm($name)
 	{
-		return new \FrontModule\SignInForm($this, $name);
+		return new \FrontModule\SignInForm(
+			$this->context->getService('signInService'),
+			$this, 
+			$name
+		);
 	}
 
 	protected function createComponentSignUpForm($name)
 	{
 		return new \FrontModule\SignUpForm(
 			$this->context->getService('signUpService'),
+			$this->context->getService('signInService'),
 			$this, 
 			$name
 		);
