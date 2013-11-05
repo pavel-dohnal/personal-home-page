@@ -60,3 +60,4 @@ html.js .jshidden {
 .block-body{overflow-y:auto;height:400px;}
 .sign{width:350px;margin:90px auto;}
 .sign .switch{float:right;}
+.ng-cloak{display:none !important;}

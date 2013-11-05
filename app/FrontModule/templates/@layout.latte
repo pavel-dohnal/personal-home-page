@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="robots" content="{$robots}" n:ifset="$robots">
@@ -10,7 +10,6 @@
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/bootstrap.css">
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
-	<script src="{$basePath}/js/angular.js"></script>
 	{block head}{/block}
 	<script>document.documentElement.className+=' js'</script>
 
@@ -29,5 +28,6 @@
 
 		{include #content}
 	</div>
-	<script src="{$basePath}/js/netteForms.js"></script>
-	<script src="{$basePath}/js/main.js"></script>
+	<script src="{$basePath}/js/libs/require.js" data-main="{$basePath}/js/main.js"></script>
+	<script src="{$basePath}/js/libs/netteForms.js"></script>
+	
