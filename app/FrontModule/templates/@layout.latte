@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html ng-app>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="robots" content="{$robots}" n:ifset="$robots">
@@ -11,16 +10,8 @@
 	<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/bootstrap.css">
 	<link rel="stylesheet" media="print" href="{$basePath}/css/print.css">
 	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	<script src="{$basePath}/js/angular.js"></script>
 	{block head}{/block}
-	<style>
-		.stick-head{ width:100%;height:50px;line-height:50px;background:#444;color:white;border-bottom:4px solid #CC0;font-weight:bold;font-size:16px;top:0;}
-		.user{ margin-right:80px;}
-		.logo{ margin-left:80px;}
-		.block{ width:400px;border:1px solid black;margin:10px;}
-		.block-body{ overflow-y:auto;height:400px;}
-	</style>
-</head>
-<body>
 	<script>document.documentElement.className+=' js'</script>
 
 	<div class="stick-head">
@@ -39,5 +30,4 @@
 		{include #content}
 	</div>
 	<script src="{$basePath}/js/netteForms.js"></script>
-</body>
-</html>
+	<script src="{$basePath}/js/main.js"></script>
