@@ -1,14 +1,11 @@
-require.config({
- 
-	paths: {
-		'angular': 'libs/angular',
-		'domReady': 'libs/domReady',
-		'cs': 'libs/cs'
-	},
-	shim: {
-		'angular': {
-			exports: 'angular'
-		}
-	},
-	deps: ['./bootstrap']
-});
+function LoginCtrl($scope) {
+	$scope.signinVisible = true;
+
+	$scope.showSignIn = function () {
+		$scope.signinVisible = true;
+	}
+
+	$scope.showSignUp = function () {
+		$scope.signinVisible = false;
+	}
+}
