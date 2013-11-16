@@ -11,9 +11,16 @@ class BlockAddPresenter extends BasePresenter
 	 */
 	public function renderDefault()
 	{
-		$httpRequestData = $this->context->getService('httpRequestData');
-		$inputData = $httpRequestData->getData();
+		$httpRequestService = $this->context->getService('parsedHttpInput');
+		$inputData = $httpRequestService->getData();
 		$this->checkInput($input);
+	}
+
+	private function checkInput($input)
+	{
+		if (!$this->getHttpRequest()->isMethod('post')) {
+			throw new \Nette\Application\BadRequestException('only POST method is allowed', 405);
+		}
 	}
 
 }

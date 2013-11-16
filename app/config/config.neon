@@ -35,6 +35,7 @@ common:
 		entityManager:
 			factory: EntityManagerFactory::create(%database%, %debugMode%)
 		httpRequestData: HttpRequestData
+		parsedHttpInput: ParsedHttpInput(@httpRequestData)
 
 
 	factories:
