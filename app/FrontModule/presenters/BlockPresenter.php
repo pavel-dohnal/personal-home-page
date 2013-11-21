@@ -9,33 +9,32 @@ class BlockPresenter extends BasePresenter
 {
 
 	public function startup()
-	{
-		parent::startup();
-		$this->detectAction();
-		$user = $this->getUser()
-		if ($user->isLoggedIn()) {
+	{		
+		parent::startup();		
+		$this->changeActionByHttpMethod();		
+		$user = $this->getUser();
+		if (!$user->isLoggedIn()) {
 			throw new \Nette\Application\BadRequestException('only authenticated access allowed', 403); 
 		}
 	}
 
-	private function detectAction()
+	private function changeActionByHttpMethod()
 	{
 		$method = $this->request->getMethod();
 		switch ($method) {
 			case 'DELETE':
-				$action = 'deleteBlock';
+				$this->changeAction('deleteBlock');
 				break;
 			case 'POST':
-				$action = 'createBlock';
+				$this->changeAction('createBlock');
 				break;
 			case 'PUT':
-				$action = 'updateBlock';
+				$this->changeAction('updateBlock');
 				break;
 			default:
-				$action = 'default';
+				$this->changeAction('default');
 				break;
 		}
-		$this->changeAction($action);
 	}
 
 	public function renderDefault()
@@ -48,14 +47,15 @@ class BlockPresenter extends BasePresenter
 	{
 		$httpRequestService = $this->context->getService('parsedHttpInput');
 		$inputData = $httpRequestService->getData();
-		$user = $this->getUser()
+		$user = $this->getUser();
 	}
 
 	public function renderUpdateBlock()
 	{
 		$httpRequestService = $this->context->getService('parsedHttpInput');
 		$inputData = $httpRequestService->getData();
-		$user = $this->getUser()
+		$user = $this->getUser();
+
 	}
 
 	public function renderDeleteBlock()
