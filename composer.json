@@ -23,7 +23,8 @@
 		"dg/adminer-custom": "1",
 		"doctrine/common": "2.4.*",
 		"doctrine/dbal": "2.4.*",
-		"doctrine/orm": "2.4.*"
+		"doctrine/orm": "2.4.*",
+		"doctrine/mongodb-odm": "1.0.*@dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*"
