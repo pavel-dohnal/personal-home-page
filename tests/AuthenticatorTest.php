@@ -1,12 +1,14 @@
 <?php
 
-class AuthenticatorTest extends PHPUnit_Framework_TestCase
+namespace User;
+
+class AuthenticatorTest extends \PHPUnit_Framework_TestCase
 {
 
 	/**
 	 * @var PHPUnit_Framework_MockObject_MockObject
 	 */
-	private $userFacade;
+	private $userStorageFacade;
 
 	/**
 	 * @var PHPUnit_Framework_MockObject_MockObject
@@ -14,15 +16,15 @@ class AuthenticatorTest extends PHPUnit_Framework_TestCase
 	private $passwordService;
 
 	/** 
-	 * @var \Authenticator
+	 * @var Authenticator
 	 */
 	private $authenticator;
 
 	public function setup()
 	{
-		$this->userFacade = $this->getMock('UserFacade', array('loadByEmailAddress'), array(), '', false, false);
-		$this->passwordService = $this->getMock('PasswordService', array('validate'), array(), '', false, false);
-		$this->authenticator = new \Authenticator($this->userFacade, $this->passwordService);
+		$this->userStorageFacade = $this->getMock('\User\StorageFacade', array('loadByEmailAddress'), array(), '', false, false);
+		$this->passwordService = $this->getMock('\User\PasswordService', array('validate'), array(), '', false, false);
+		$this->authenticator = new Authenticator($this->userStorageFacade, $this->passwordService);
 	}
 
 	/**
@@ -34,7 +36,7 @@ class AuthenticatorTest extends PHPUnit_Framework_TestCase
 	{
 		$emailAddress = 'a@b.c';
 		$password = 'secret';
-		$this->userFacade
+		$this->userStorageFacade
 			->expects($this->once())
 			->method('loadByEmailAddress')
 			->with($emailAddress)
@@ -55,8 +57,8 @@ class AuthenticatorTest extends PHPUnit_Framework_TestCase
 		$emailAddress = 'a@b.c';
 		$password = 'secret';
 		$passwordHash = 'hash';
-		$user = new \User(new \Email($emailAddress), $passwordHash);
-		$this->userFacade
+		$user = new \User\Entity\User(new Email($emailAddress), $passwordHash);
+		$this->userStorageFacade
 			->expects($this->once())
 			->method('loadByEmailAddress')
 			->with($emailAddress)
@@ -74,8 +76,8 @@ class AuthenticatorTest extends PHPUnit_Framework_TestCase
 		$emailAddress = 'a@b.c';
 		$password = 'secret';
 		$passwordHash = 'hash';
-		$user = new \User(new \Email($emailAddress), $passwordHash);
-		$this->userFacade
+		$user = new \User\Entity\User(new Email($emailAddress), $passwordHash);
+		$this->userStorageFacade
 			->expects($this->once())
 			->method('loadByEmailAddress')
 			->with($emailAddress)

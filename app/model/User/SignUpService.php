@@ -1,23 +1,25 @@
 <?php
 
-class ESignUp extends Exception{}
+namespace User;
+
+class ESignUp extends \Exception{}
 
 class SignUpService
 {
 
 	/** 
-	 * @var \UserFacade
+	 * @var StorageFacade
 	 */
-	private $userFacade;
+	private $userStorageFacade;
 
 	/** 
 	 * @var \PasswordService
 	 */
 	private $passwordService;
 
-	public function __construct(\UserFacade $userFacade, \PasswordService $passwordService)
+	public function __construct(StorageFacade $userStorageFacade, PasswordService $passwordService)
 	{
-		$this->userFacade = $userFacade;
+		$this->userStorageFacade = $userStorageFacade;
 		$this->passwordService = $passwordService;
 	}
 
@@ -33,16 +35,16 @@ class SignUpService
 		$this->checkUserExists($formValues->email);		
 		try {
 			$newUser = $this->createUser($formValues);
-			$this->userFacade->save($newUser);
+			$this->userStorageFacade->save($newUser);
 			return $newUser;
-		} catch (\EEmailValidation $e) {
+		} catch (EEmailValidation $e) {
 			throw new ESignUp($e->getMessage(), 0, $e);
 		}
 	}
 
 	private function checkUserExists($emailAddress)
 	{
-		$existingUser = $this->userFacade->loadByEmailAddress($emailAddress);
+		$existingUser = $this->userStorageFacade->loadByEmailAddress($emailAddress);
 		if ($existingUser) {
 			throw new ESignUp('A user already exists with this email address');
 		}	
@@ -50,8 +52,8 @@ class SignUpService
 
 	private function createUser(\Nette\ArrayHash $formValues)
 	{
-		$email = new \Email($formValues->email);
-		$newUser = new \User($email, $this->passwordService->getHash($formValues->password));
+		$email = new Email($formValues->email);
+		$newUser = new \User\Entity\User($email, $this->passwordService->getHash($formValues->password));
 		if ($formValues->name) {
 			$newUser->setName($formValues->name);
 		}

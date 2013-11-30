@@ -29,7 +29,7 @@ common:
 
 
 	services:
-		authenticator: Authenticator(@userFacade, @passwordService)
+		authenticator: \User\Authenticator(@userStorageFacade, @passwordService)
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
 		entityManager:

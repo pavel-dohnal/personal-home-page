@@ -1,6 +1,8 @@
 <?php
 
-class EmailTest extends PHPUnit_Framework_TestCase
+namespace User;
+
+class EmailTest extends \PHPUnit_Framework_TestCase
 {
 
 	/**
@@ -8,7 +10,7 @@ class EmailTest extends PHPUnit_Framework_TestCase
 	 */
 	public function testValidEmailAddress($emailAddress)
 	{
-		$email = new \Email($emailAddress);
+		$email = new Email($emailAddress);
 		$this->assertEquals(trim($emailAddress), (string)$email);
 	}
 
@@ -24,12 +26,12 @@ class EmailTest extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @expectedException EEmailValidation
+	 * @expectedException \User\EEmailValidation
 	 * @dataProvider invalidEmailAddress
 	 */
 	public function testInvalidEmailAddress($emailAddress)
 	{
-		$email = new \Email($emailAddress);
+		$email = new Email($emailAddress);
 		$this->assertEquals($emailAddress, (string)$email);
 	}
 

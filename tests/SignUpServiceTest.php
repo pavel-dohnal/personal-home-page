@@ -1,6 +1,8 @@
 <?php
 
-class SignUpServiceTest extends PHPUnit_Framework_TestCase
+namespace User;
+
+class SignUpServiceTest extends \PHPUnit_Framework_TestCase
 {
 
 	/**
@@ -14,15 +16,15 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 	private $passwordService;
 
 	/** 
-	 * @var \SignUpService
+	 * @var SignUpService
 	 */
 	private $signUpService;
 
 	public function setup()
 	{
-		$this->userFacade = $this->getMock('UserFacade', array('loadByEmailAddress', 'save'), array(), '', false, false);
-		$this->passwordService = $this->getMock('PasswordService', array('getHash'), array(), '', false, false);
-		$this->signUpService = new \SignUpService($this->userFacade, $this->passwordService);
+		$this->userFacade = $this->getMock('User\StorageFacade', array('loadByEmailAddress', 'save'), array(), '', false, false);
+		$this->passwordService = $this->getMock('User\PasswordService', array('getHash'), array(), '', false, false);
+		$this->signUpService = new SignUpService($this->userFacade, $this->passwordService);
 	}
 
 	/**
@@ -36,7 +38,7 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @expectedException \ESignUp
+	 * @expectedException \User\ESignUp
 	 * @expectedExceptionMessage A user already exists with this email address
 	 */
 	public function testSignUpWithExistingUser()
@@ -44,7 +46,7 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 		$emailAddress = 'a@b.c';
 		$password = 'secret';
 		$passwordHash = 'hash';
-		$user = new \User(new \Email($emailAddress), $passwordHash);
+		$user = new \User\Entity\User(new Email($emailAddress), $passwordHash);
 		$this->userFacade
 			->expects($this->once())
 			->method('loadByEmailAddress')
@@ -61,7 +63,7 @@ class SignUpServiceTest extends PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @expectedException \ESignUp
+	 * @expectedException \User\ESignUp
 	 * @expectedExceptionMessage Email address a is not valid.
 	 */
 	public function testSignUpWithInvalidEmailAddress()

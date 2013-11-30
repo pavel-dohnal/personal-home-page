@@ -1,6 +1,8 @@
 <?php
 
-class UserFacade 
+namespace User;
+
+class StorageFacade 
 {
 
 	/**
@@ -25,7 +27,7 @@ class UserFacade
 	/**
 	 * @param \User $user
 	 */
-	public function save(\User $user)
+	public function save(\User\Entity\User $user)
 	{
 		$this->entityManager->persist($user);
 		$this->entityManager->flush();

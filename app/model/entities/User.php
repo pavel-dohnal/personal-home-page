@@ -1,4 +1,7 @@
 <?php
+
+namespace User\Entity;
+
 /**
 * @Entity @Table(name="users")
 */
@@ -47,7 +50,7 @@ class User implements \Nette\Security\IIdentity
 	 * @param \Email email
 	 * @param string password
 	 */
-	public function __construct(\Email $email, $password)
+	public function __construct(\User\Email $email, $password)
 	{
 		$this->email = (string)$email;
 		$this->password = $password;

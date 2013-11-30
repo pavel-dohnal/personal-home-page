@@ -1,9 +1,9 @@
 services:
 
-	passwordService: PasswordService
+	passwordService: \User\PasswordService
 
-	userFacade: UserFacade(@entityManager)
+	userStorageFacade: \User\StorageFacade(@entityManager)
 
-	signUpService: SignUpService(@userFacade, @passwordService)
+	signUpService: \User\SignUpService(@userStorageFacade, @passwordService)
 
-	signInService: SignInService
+	signInService: \User\SignInService

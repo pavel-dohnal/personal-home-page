@@ -46,8 +46,13 @@ class BlockPresenter extends BasePresenter
 	public function renderCreateBlock()
 	{
 		$httpRequestService = $this->context->getService('parsedHttpInput');
-		$inputData = $httpRequestService->getData();
-		$user = $this->getUser();
+		$createBlock = $this->context->getService('createBlockController');
+		try {
+			$output = $createBlock->run($httpRequestService->getData(), $this->getUser());
+			$this->terminateWithResponse($output, 201);
+		} catch (\InvalidArgumentException $e) {
+			$this->terminateWithError($e->getMessage());
+		}
 	}
 
 	public function renderUpdateBlock()

@@ -1,5 +1,7 @@
 <?php
 
+namespace User;
+
 class EEmailValidation extends \Exception{}
 
 class Email

@@ -1,6 +1,8 @@
 <?php
 
-class PasswordServiceTest extends PHPUnit_Framework_TestCase
+namespace User;
+
+class PasswordServiceTest extends \PHPUnit_Framework_TestCase
 {
 
 	/** 
@@ -10,7 +12,7 @@ class PasswordServiceTest extends PHPUnit_Framework_TestCase
 
 	public function setup()
 	{
-		$this->passwordService = new \PasswordService;
+		$this->passwordService = new PasswordService;
 	}
 
 	public function testGetHash()

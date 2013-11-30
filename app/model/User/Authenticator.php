@@ -1,24 +1,26 @@
 <?php
 
+namespace User;
+
 /**
  * Users authenticator.
  */
-class Authenticator extends Nette\Object implements \Nette\Security\IAuthenticator
+class Authenticator extends \Nette\Object implements \Nette\Security\IAuthenticator
 {
 
 	/** 
-	 * @var \UserFacade
+	 * @var StorageFacade
 	 */
-	private $userFacade;
+	private $userStorageFacade;
 
 	/** 
 	 * @var \PasswordService
 	 */
 	private $passwordService;
 
-	public function __construct(\UserFacade $userFacade, \PasswordService $passwordService)
+	public function __construct(StorageFacade $userStorageFacade, PasswordService $passwordService)
 	{
-		$this->userFacade = $userFacade;
+		$this->userStorageFacade = $userStorageFacade;
 		$this->passwordService = $passwordService;
 	}
 
@@ -31,7 +33,7 @@ class Authenticator extends Nette\Object implements \Nette\Security\IAuthenticat
 	{
 		list($emailAddress, $password) = $credentials;
 
-		$user = $this->userFacade->loadByEmailAddress($emailAddress);
+		$user = $this->userStorageFacade->loadByEmailAddress($emailAddress);
 	
 		if (!$user) {
 			throw new \Nette\Security\AuthenticationException('The email address is incorrect.', self::IDENTITY_NOT_FOUND);
