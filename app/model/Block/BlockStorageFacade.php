@@ -6,18 +6,18 @@ class StorageFacade
 {
 
 	/**
-	 * @var \Doctrine\ORM\EntityManager
+	 * @var \Doctrine\ODM\MongoDB\DocumentManager
 	 */
-	private $entityManager;
+	private $documentManager;
 
-	public function __construct(\Doctrine\ORM\EntityManager $entityManager)
+	public function __construct(\Doctrine\ODM\MongoDB\DocumentManager $documentManager)
 	{
-		$this->entityManager = $entityManager;
+		$this->documentManager = $documentManager;
 	}
 
 	public function create()
 	{
-		
+
 	}
 
 }

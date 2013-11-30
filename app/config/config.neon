@@ -12,6 +12,8 @@ common:
 			password: global-settings-should-be-overwritten
 			dbname: personal-home-page
 		debugMode: true
+		mongo:
+			connectionuri: mongodb://global-user:global-user@linus.mongohq.com:10059/personal-home-page
 
 	includes:
 		- ../model/User/user.neon
@@ -34,6 +36,8 @@ common:
 		router: @routerFactory::createRouter
 		entityManager:
 			factory: EntityManagerFactory::create(%database%, %debugMode%)
+		documentManager:
+			factory: DocumentManagerFactory::create(%mongo%, %tempDir%)
 		httpRequestData: HttpRequestData
 		parsedHttpInput: ParsedHttpInput(@httpRequestData)
 
