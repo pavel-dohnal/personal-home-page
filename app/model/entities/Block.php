@@ -2,13 +2,15 @@
 
 namespace User\Documents;
 
-/** @EmbeddedDocument */
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+
+/** @ODM\EmbeddedDocument */
 abstract class Block
 {
-	/** @Id(strategy="AUTO") */
+	/** @ODM\Id(strategy="AUTO") */
 	protected $id;
 
-	/** @Field */
+	/** @ODM\Field */
 	protected $type;
 
 	public function __construct()
