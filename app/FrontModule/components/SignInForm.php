@@ -10,7 +10,7 @@ class SignInForm extends \Nette\Application\UI\Control
 	 */
 	private $signInService;
 
-	public function __construct(\SignInService $signInService, \Nette\ComponentModel\IComponent $parent = NULL, $name = NULL)
+	public function __construct(\User\SignInService $signInService, \Nette\ComponentModel\IComponent $parent = NULL, $name = NULL)
 	{
 		parent::__construct($parent, $name);
 		$this->signInService = $signInService;

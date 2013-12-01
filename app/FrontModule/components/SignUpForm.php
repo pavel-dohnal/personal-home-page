@@ -16,8 +16,8 @@ class SignUpForm extends \Nette\Application\UI\Control
 	private $signInService;
 
 	public function __construct(
-		\SignUpService $signUpService, 
-		\SignInService $signInService, 
+		\User\SignUpService $signUpService, 
+		\User\SignInService $signInService, 
 		\Nette\ComponentModel\IComponent $parent = NULL, 
 		$name = NULL
 	)

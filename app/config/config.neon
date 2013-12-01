@@ -13,7 +13,8 @@ common:
 			dbname: personal-home-page
 		debugMode: true
 		mongo:
-			connectionuri: mongodb://global-user:global-user@linus.mongohq.com:10059/personal-home-page
+			connectionuri: mongodb://global-user:global-user@linus.mongohq.com:10059/
+			dbname: personal-home-page
 
 	includes:
 		- ../model/User/user.neon

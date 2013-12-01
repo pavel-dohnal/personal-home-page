@@ -2,19 +2,32 @@
 
 namespace User\Documents;
 
-/** @Document(collection="blocks") */
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+
+/** @ODM\Document(collection="blocks") */
 class UserBlocks
 {
 
-	/** @Id(strategy="NONE") */
+	/** @ODM\Id(strategy="NONE") */
 	private $userId;
 
 	/**
-     * @EmbedMany(
+     * @ODM\EmbedMany(
      *   discriminatorMap={
      *     "url"="User\Documents\UserBlock"
      *   }
      * )
      */
 	private $blocks;
+
+	public function __construct($userId)
+	{
+		$this->userId = $userId;
+		$this->blocks = [];
+	}
+
+	public function addBlock(Block $block)
+	{
+		$this->blocks[] = $block;
+	}
 }

@@ -21,7 +21,7 @@ class StorageFacade
 	 */
 	public function loadByEmailAddress($emailAddress)
 	{
-		return $this->entityManager->getRepository('User')->findOneByEmail($emailAddress);
+		return $this->entityManager->getRepository('User\Entity\User')->findOneByEmail($emailAddress);
 	}
 
 	/**
