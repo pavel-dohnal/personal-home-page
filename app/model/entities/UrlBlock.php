@@ -13,13 +13,12 @@ class UrlBlock extends Block
 	private $url;
 
 	/**
-	 * //TODO validation
 	 * @param string $url
 	 */
-	public function __construct($url)
+	public function __construct(\Nette\Http\Url $url)
 	{
 		parent::__construct();
-		$this->url = $url;
+		$this->url = $url->getAbsoluteUrl();
 	}
 
 	public function getType()
