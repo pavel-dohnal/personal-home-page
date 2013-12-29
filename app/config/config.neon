@@ -18,6 +18,7 @@ common:
 
 	includes:
 		- ../model/User/user.neon
+		- ../model/Block/block.neon
 
 	php:
 		date.timezone: Europe/Prague

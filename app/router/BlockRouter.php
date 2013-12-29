@@ -13,20 +13,20 @@ class BlockRouter implements Nette\Application\IRouter
 		if (end($pathChunks) === 'blocks') {
 			return new \Nette\Application\Request('Front:Block:List', 'default', []);
 		} else {			
-			return $this->matchSingleBlock($pathChunks);
+			return $this->matchSingleBlock($pathChunks, $httpRequest->getMethod());
 		}		
 	}
 
-	private function matchSingleBlock(array $pathChunks)
+	private function matchSingleBlock(array $pathChunks, $method)
 	{
-		if ((end($pathChunks) === 'block') && ($httpRequest->getMethod() === 'POST')) {
+		if ((end($pathChunks) === 'block') && ($method === 'POST')) {
 			return new \Nette\Application\Request('Front:Block:Create', 'default', []);
 		} else {
-			return $this->matchSingleBlockWithParameter($pathChunks);
+			return $this->matchSingleBlockWithParameter($pathChunks, $method);
 		}
 	}
 
-	private function matchSingleBlockWithParameter(array $pathChunks)
+	private function matchSingleBlockWithParameter(array $pathChunks, $method)
 	{
 		if (count($pathChunks) < 2) {
 			return null;
@@ -36,9 +36,9 @@ class BlockRouter implements Nette\Application\IRouter
 		if ($beforeLastPathChunk !== 'block') {
 			return null;
 		}
-		if ($httpRequest->getMethod() === 'DELETE') {
+		if ($method === 'DELETE') {
 			return new \Nette\Application\Request('Front:Block:Delete', 'default', ['id' => $lastPathChunk]);
-		} elseif ($httpRequest->getMethod() === 'PUT') {
+		} elseif ($method === 'PUT') {
 			return new \Nette\Application\Request('Front:Block:Update', 'default', ['id' => $lastPathChunk]);
 		} else {
 			return null;

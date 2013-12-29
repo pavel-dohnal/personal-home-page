@@ -11,16 +11,16 @@ class Authenticator extends \Nette\Object implements \Nette\Security\IAuthentica
 	/** 
 	 * @var StorageFacade
 	 */
-	private $userStorageFacade;
+	private $userFacade;
 
 	/** 
 	 * @var \PasswordService
 	 */
 	private $passwordService;
 
-	public function __construct(StorageFacade $userStorageFacade, PasswordService $passwordService)
+	public function __construct(UserFacade $userFacade, PasswordService $passwordService)
 	{
-		$this->userStorageFacade = $userStorageFacade;
+		$this->userFacade = $userFacade;
 		$this->passwordService = $passwordService;
 	}
 
@@ -33,7 +33,7 @@ class Authenticator extends \Nette\Object implements \Nette\Security\IAuthentica
 	{
 		list($emailAddress, $password) = $credentials;
 
-		$user = $this->userStorageFacade->loadByEmailAddress($emailAddress);
+		$user = $this->userFacade->loadByEmailAddress($emailAddress);
 	
 		if (!$user) {
 			throw new \Nette\Security\AuthenticationException('The email address is incorrect.', self::IDENTITY_NOT_FOUND);

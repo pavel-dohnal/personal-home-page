@@ -1,0 +1,3 @@
+services:
+
+	createBlockController: \Block\CreateBlockController
