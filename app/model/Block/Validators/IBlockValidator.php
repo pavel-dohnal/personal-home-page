@@ -4,5 +4,7 @@ namespace Block\Validator;
 
 interface IBlockValidator
 {
-	public function validate(\stdClass $input);
+	public function validateCreate(\stdClass $input);
+
+	public function validateUpdate(\stdClass $input);
 }

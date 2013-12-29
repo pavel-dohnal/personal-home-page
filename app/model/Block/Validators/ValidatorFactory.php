@@ -15,7 +15,7 @@ class ValidatorFactory
 		if (!isset($input->type)) {
 			throw new EValidation('Type parameter is mandatory.');
 		}
-		if ($input->type == 'url') {
+		if ($input->type == UrlValidator::TYPE) {
 			return new UrlValidator();
 		}
 	}

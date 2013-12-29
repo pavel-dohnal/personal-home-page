@@ -28,6 +28,8 @@ class CreatePresenter extends BasePresenter
 			$this->terminateWithResponse($output, 201);
 		} catch (\InvalidArgumentException $e) {
 			$this->terminateWithError($e->getMessage());
+		} catch (\Exception $e) {
+			$this->terminateWithError($e->getMessage(), $e->getCode());
 		}
 	}
 }
