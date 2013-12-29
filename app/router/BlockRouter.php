@@ -2,46 +2,51 @@
 
 class BlockRouter implements Nette\Application\IRouter
 {
-	function match(Nette\Http\IRequest $httpRequest)
+	public function match(Nette\Http\IRequest $httpRequest)
 	{
 		$url = $httpRequest->getUrl();
 		$path = $url->getPath();
 		if (stripos($path, 'block') === false) {
-			return NULL;
+			return null;
 		}
 		$pathChunks = explode('/', strtolower(trim($path, '/')));
-		$params = [];
 		if (end($pathChunks) === 'blocks') {
-			$presenter = 'Front:Block:List';
+			return new \Nette\Application\Request('Front:Block:List', 'default', []);
 		} else {			
-			if ((end($pathChunks) === 'block') && ($httpRequest->getMethod() === 'POST')) {
-				$presenter = 'Front:Block:Create';
-			} else {
-				$lastPathChunk = array_pop($pathChunks);
-				$beforeLastPathChunk = array_pop($pathChunks);
-				if ($beforeLastPathChunk !== 'block') {
-					return NULL;
-				}
-				if ($httpRequest->getMethod() === 'DELETE') {
-					$presenter = 'Front:Block:Delete';
-					$params['id'] = $lastPathChunk;
-				} elseif ($httpRequest->getMethod() === 'PUT') {
-					$presenter = 'Front:Block:Update';
-					$params['id'] = $lastPathChunk;
-				} else {
-					return NULL;
-				}
-			}
-		}
-		return new \Nette\Application\Request(
-			$presenter,
-			'default',
-			$params
-		);
+			return $this->matchSingleBlock($pathChunks);
+		}		
 	}
 
-	function constructUrl(Nette\Application\Request $appRequest, Nette\Http\Url $refUrl)
+	private function matchSingleBlock(array $pathChunks)
 	{
-		//not suppported
+		if ((end($pathChunks) === 'block') && ($httpRequest->getMethod() === 'POST')) {
+			return new \Nette\Application\Request('Front:Block:Create', 'default', []);
+		} else {
+			return $this->matchSingleBlockWithParameter($pathChunks);
+		}
+	}
+
+	private function matchSingleBlockWithParameter(array $pathChunks)
+	{
+		if (count($pathChunks) < 2) {
+			return null;
+		}
+		$lastPathChunk = array_pop($pathChunks);
+		$beforeLastPathChunk = array_pop($pathChunks);
+		if ($beforeLastPathChunk !== 'block') {
+			return null;
+		}
+		if ($httpRequest->getMethod() === 'DELETE') {
+			return new \Nette\Application\Request('Front:Block:Delete', 'default', ['id' => $lastPathChunk]);
+		} elseif ($httpRequest->getMethod() === 'PUT') {
+			return new \Nette\Application\Request('Front:Block:Update', 'default', ['id' => $lastPathChunk]);
+		} else {
+			return null;
+		}
+	}
+
+	public function constructUrl(Nette\Application\Request $appRequest, Nette\Http\Url $refUrl)
+	{
+		throw new \InvalidStateException('Creating Block Urls is not supported.');
 	}
 }

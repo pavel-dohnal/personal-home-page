@@ -92,7 +92,9 @@ class BlockRouterTest extends \PHPUnit_Framework_TestCase
 			->will($this->returnValue('DELETE'));
 		$match = $this->blockRouter->match($this->httpRequest);
 		$this->assertInstanceOf('\Nette\Application\Request', $match);
-		$this->assertEquals('Front:Block:Delete', $match->getPresenterName());	
+		$this->assertEquals('Front:Block:Delete', $match->getPresenterName());
+		$parameters = $match->getParameters();
+		$this->assertEquals('4', $parameters['id']);
 	}
 
 	public function testReturnsUpdate()
@@ -108,7 +110,9 @@ class BlockRouterTest extends \PHPUnit_Framework_TestCase
 			->will($this->returnValue('PUT'));
 		$match = $this->blockRouter->match($this->httpRequest);
 		$this->assertInstanceOf('\Nette\Application\Request', $match);
-		$this->assertEquals('Front:Block:Update', $match->getPresenterName());	
+		$this->assertEquals('Front:Block:Update', $match->getPresenterName());
+		$parameters = $match->getParameters();
+		$this->assertEquals('4', $parameters['id']);
 	}
 
 	public function testWrongMethod()
@@ -123,6 +127,6 @@ class BlockRouterTest extends \PHPUnit_Framework_TestCase
 			->method('getMethod')
 			->will($this->returnValue('GET'));
 		$match = $this->blockRouter->match($this->httpRequest);
-		$this->assertNull($match);
+		$this->assertNull($match);		
 	}
 }
