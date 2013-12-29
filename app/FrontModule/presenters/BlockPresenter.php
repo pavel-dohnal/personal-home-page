@@ -4,43 +4,12 @@ namespace FrontModule;
 
 /**
  * simple rest presenter for block manipulation
+ * @deprecated Use BlockModule instead
  */
-class BlockPresenter extends BasePresenter
+class BlockPresenter extends BaseJsonOutputPresenter
 {
 
-	public function startup()
-	{		
-		parent::startup();		
-		$this->changeActionByHttpMethod();		
-		$user = $this->getUser();
-		if (!$user->isLoggedIn()) {
-			throw new \Nette\Application\BadRequestException('only authenticated access allowed', 403); 
-		}
-	}
-
-	private function changeActionByHttpMethod()
-	{
-		$method = $this->request->getMethod();
-		switch ($method) {
-			case 'DELETE':
-				$this->changeAction('deleteBlock');
-				break;
-			case 'POST':
-				$this->changeAction('createBlock');
-				break;
-			case 'PUT':
-				$this->changeAction('updateBlock');
-				break;
-			default:
-				$this->changeAction('default');
-				break;
-		}
-	}
-
-	public function renderDefault()
-	{
-	}
-
+	
 	public function renderCreateBlock()
 	{
 		$httpRequestService = $this->context->getService('parsedHttpInput');
@@ -52,18 +21,4 @@ class BlockPresenter extends BasePresenter
 			$this->terminateWithError($e->getMessage());
 		}
 	}
-
-	public function renderUpdateBlock()
-	{
-		$httpRequestService = $this->context->getService('parsedHttpInput');
-		$inputData = $httpRequestService->getData();
-		$user = $this->getUser();
-
-	}
-
-	public function renderDeleteBlock()
-	{
-		
-	}
-
 }

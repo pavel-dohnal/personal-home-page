@@ -17,6 +17,7 @@ class RouterFactory
 	public function createRouter()
 	{
 		$router = new RouteList();
+		$router[] = new \BlockRouter;
 		$router[] = new Route('<presenter>/<action>[/<id>]', [
 			'module' => 'Front',
 			'presenter' => 'Homepage',
