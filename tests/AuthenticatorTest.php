@@ -22,7 +22,7 @@ class AuthenticatorTest extends \PHPUnit_Framework_TestCase
 
 	public function setup()
 	{
-		$this->userStorageFacade = $this->getMock('\User\StorageFacade', ['loadByEmailAddress'], [], '', false, false);
+		$this->userStorageFacade = $this->getMock('\User\UserFacade', ['loadByEmailAddress'], [], '', false, false);
 		$this->passwordService = $this->getMock('\User\PasswordService', ['validate'], [], '', false, false);
 		$this->authenticator = new Authenticator($this->userStorageFacade, $this->passwordService);
 	}
