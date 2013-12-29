@@ -2,7 +2,7 @@
 
 namespace User;
 
-class StorageFacade 
+class UserFacade 
 {
 
 	/**

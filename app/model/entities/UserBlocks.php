@@ -14,7 +14,7 @@ class UserBlocks
 	/**
      * @ODM\EmbedMany(
      *   discriminatorMap={
-     *     "url"="User\Documents\UserBlock"
+     *     "url"="User\Documents\UrlBlock"
      *   }
      * )
      */
@@ -29,5 +29,10 @@ class UserBlocks
 	public function addBlock(Block $block)
 	{
 		$this->blocks[] = $block;
+	}
+
+	public function getBlocks()
+	{
+		return $this->blocks;
 	}
 }

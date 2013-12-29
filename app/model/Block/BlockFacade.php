@@ -2,7 +2,7 @@
 
 namespace Block;
 
-class StorageFacade
+class BlockFacade
 {
 
 	/**

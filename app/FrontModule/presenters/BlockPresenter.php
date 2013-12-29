@@ -39,13 +39,6 @@ class BlockPresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		//TODO devel only, delete this method
-		$userBlocks = new \User\Documents\UserBlocks($this->getUser()->getIdentity()->getId());
-		$userBlocks->addBlock(new \User\Documents\UrlBlock(new \Nette\Http\Url('http://www.gooble.com')));
-		$dm = $this->context->getService('documentManager');
-		$dm->persist($userBlocks);
-		$dm->flush();
-		die;
 	}
 
 	public function renderCreateBlock()
