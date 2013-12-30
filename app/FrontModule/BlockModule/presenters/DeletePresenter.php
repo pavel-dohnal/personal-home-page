@@ -7,7 +7,6 @@ class DeletePresenter extends BasePresenter
 
 	public function renderDefault()
 	{
-		//TODO
-		echo 'delete';die;
+		throw new \Exception('Delete method is not implemented yet');
 	}
 }

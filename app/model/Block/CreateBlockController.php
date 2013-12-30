@@ -6,7 +6,7 @@ class CreateBlockController
 {
 	//dependencies:	
 	//blockCreateFacade		
-	//entityFactory
+	//entityFactory?mapper
 		//validatorFactory
 
 	public function run(\User\Entity\User $user, \stdClass $input = null)

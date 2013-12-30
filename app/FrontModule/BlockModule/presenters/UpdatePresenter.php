@@ -6,7 +6,7 @@ class UpdatePresenter extends BasePresenter
 {
 
 	public function renderDefault()
-	{//TODO
-		echo 'update';die;
+	{
+		throw new \Exception('Update method is not implemented yet');
 	}
 }
