@@ -5,7 +5,7 @@ namespace FrontModule\BlockModule;
 class ListPresenter extends BasePresenter
 {
 
-	/** 
+	/**
 	 * @var \Block\ListBlocksController
 	 */
 	private $listBlocksController;
@@ -16,7 +16,7 @@ class ListPresenter extends BasePresenter
 	}
 
 	public function renderDefault()
-	{		
+	{
 		$output = $this->listBlocksController->run($this->getUser()->getIdentity());
 		$this->terminateWithResponse($output);
 	}

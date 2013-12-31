@@ -5,13 +5,15 @@ namespace Block;
 class ListBlocksController
 {
 
+	/** @var \Block\ResponseGenerator\IListResponseGenerator */
 	private $responseGenerator;
 
+	/** @var \Block\ListBlocksFacade */
 	private $facade;
 
 	public function __construct(
-		\Block\ResponseGenerator\IListResponseGenerator $responseGenerator, 
-		\Block\ListBlocksFacade $facade
+		\Block\ListBlocksFacade $facade,
+		\Block\ResponseGenerator\IListResponseGenerator $responseGenerator
 	)
 	{
 		$this->responseGenerator = $responseGenerator;
@@ -24,7 +26,7 @@ class ListBlocksController
 	 */
 	public function run(\User\Entity\User $user)
 	{
-		//TODO
-		return [];
+		$blocks = $this->facade->getBlocksByUser($user);
+		return $this->responseGenerator->generate($blocks);
 	}
 }

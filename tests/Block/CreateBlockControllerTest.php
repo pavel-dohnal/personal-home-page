@@ -32,7 +32,7 @@ class CreateBlockControllerTest extends \PHPUnit_Framework_TestCase
 			->expects($this->once())
 			->method('getId')
 			->will($this->returnValue($id));
-		$user = $this->getMock('\User\Entity\User', [], [], '', false, false);		
+		$user = $this->getMock('\User\Entity\User', [], [], '', false, false);
 		$this->mapper
 			->expects($this->once())
 			->method('map')
