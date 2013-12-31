@@ -5,11 +5,12 @@ namespace Block\ResponseGenerator
 class ListToStdClass implements IListResponseGenerator
 {
 
-	public function $blockResponseGeneratorFactory;
+	/** @var IResponseGeneratorFactory */
+	public $blockResponseGeneratorFactory;
 
-	public function __construct()
+	public function __construct(IResponseGeneratorFactory $blockResponseGeneratorFactory)
 	{
-		
+		$this->blockResponseGeneratorFactory = $blockResponseGeneratorFactory
 	}
 
 	/**
