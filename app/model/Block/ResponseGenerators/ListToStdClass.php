@@ -1,6 +1,6 @@
 <?php
 
-namespace Block\ResponseGenerator
+namespace Block\ResponseGenerator;
 
 class ListToStdClass implements IListResponseGenerator
 {
@@ -19,7 +19,7 @@ class ListToStdClass implements IListResponseGenerator
 	 */
 	public function generate(array $blocks)
 	{
-		//TODO
+
 	}
 
 }
