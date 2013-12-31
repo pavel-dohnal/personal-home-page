@@ -17,7 +17,7 @@ class ListToStdClass implements IListResponseGenerator
 	 * @param \User\Documents\Block[]
 	 * @return stdClass[]
 	 */
-	public function generate(array $blocks)
+	public function generate($blocks)
 	{
 		$return = [];
 		foreach ($blocks as $block) {
