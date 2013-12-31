@@ -7,3 +7,23 @@ services:
 	blockCreateFacade: \Block\CreateBlockFacade
 
 	blockValidatorFactory: \Block\Validator\ValidatorFactory
+
+	listBlocksController:
+		class: \Block\ListBlocksController
+		arguments:
+			- @listBlocksFacade
+			- @listBlockResponseGenerator
+
+	listBlockResponseGenerator:
+		class: \Block\ResponseGenerator\ListToStdClass
+		arguments:
+			- @blockResponseGeneratorFactoryCached
+
+	listBlocksFacade: \Block\ListBlocksFacade
+
+	blockResponseGeneratorFactoryCached:
+		class: \Block\ResponseGenerator\BlockResponseGeneratorFactoryCachingDecorator
+		arguments:
+			- @blockResponseGeneratorFactory
+
+	blockResponseGeneratorFactory: \Block\ResponseGenerator\BlockResponseGeneratorFactory

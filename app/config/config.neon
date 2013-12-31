@@ -44,10 +44,6 @@ common:
 		httpRequestData: HttpRequestData
 		parsedHttpInput: ParsedHttpInput(@httpRequestData)
 
-
-	factories:
-
-
 production < common:
 	parameters:
 		debugMode: false
@@ -59,7 +55,7 @@ development < common:
 		database:
 			driver: pdo_mysql
 			user: root
-			password: 
+			password:
 			dbname: personal-home-page
 
 
