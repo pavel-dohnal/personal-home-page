@@ -21,8 +21,8 @@ class BlockCreateFacade
 		$this->block = $block;
 	}
 
-	public function run(\User\Entity\User $user)
-	{		
+	public function saveBlock(\User\Entity\User $user)
+	{
 		$userBlocks = $this->documentManager->find('\User\Documents\UserBlocks', $user->getId());
 		if (!$userBlocks) {
 			$userBlocks = new \User\Documents\UserBlocks($user->getId());

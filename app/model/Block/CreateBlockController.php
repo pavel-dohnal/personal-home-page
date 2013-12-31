@@ -4,13 +4,30 @@ namespace Block;
 
 class CreateBlockController
 {
-	//dependencies:	
-	//blockCreateFacade		
-	//entityFactory?mapper
-		//validatorFactory
 
+	/** @var InputDataToBlockMapper */
+	private $mapper;
+
+	/** @var BlockCreateFacade */
+	private $facade;
+
+	public function __construct(InputDataToBlockMapper $mapper, BlockCreateFacade $facade)
+	{
+		$this->mapper = $mapper;
+		$this->facade = $facade;
+	}
+
+	/**
+	 * @param \User\Entity\User $user
+	 * @param \stdClass $inputData
+	 * @throws \InvalidArgumentException
+	 * @throws \Nette\InvalidArgumentException
+	 */
 	public function run(\User\Entity\User $user, \stdClass $input = null)
 	{		
-		return [];
+		$block = $this->mapper->map($input);
+		$facade->setBlock($block);
+		$facade->saveBlock($user);
+		return true;//TODO maybee return UserBlocks ?
 	}
 }

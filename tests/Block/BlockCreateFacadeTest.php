@@ -47,7 +47,7 @@ class BlockCreateFacadeTest extends \PHPUnit_Framework_TestCase
 		$this->documentManager
 			->expects($this->once())
 			->method('flush');
-		$this->facade->run($user);
+		$this->facade->saveBlock($user);
 	}
 
 	public function testWorksWithNewDocument()
@@ -71,6 +71,6 @@ class BlockCreateFacadeTest extends \PHPUnit_Framework_TestCase
 		$this->documentManager
 			->expects($this->once())
 			->method('flush');
-		$this->facade->run($user);
+		$this->facade->saveBlock($user);
 	}
 }
