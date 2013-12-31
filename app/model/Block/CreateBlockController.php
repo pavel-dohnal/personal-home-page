@@ -26,8 +26,8 @@ class CreateBlockController
 	public function run(\User\Entity\User $user, \stdClass $input = null)
 	{		
 		$block = $this->mapper->map($input);
-		$facade->setBlock($block);
-		$facade->saveBlock($user);
+		$this->facade->setBlock($block);
+		$this->facade->saveBlock($user);
 		return true;//TODO maybee return UserBlocks ?
 	}
 }
