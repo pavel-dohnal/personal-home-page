@@ -39,6 +39,7 @@ common:
 		entityManager:
 			factory: EntityManagerFactory::create(%database%, %debugMode%)
 		documentManager:
+			class: \Doctrine\ODM\MongoDB\DocumentManager
 			factory: DocumentManagerFactory::create(%mongo%, %tempDir%)
 		httpRequestData: HttpRequestData
 		parsedHttpInput: ParsedHttpInput(@httpRequestData)

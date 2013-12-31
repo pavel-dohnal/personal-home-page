@@ -16,7 +16,7 @@ abstract class BaseJsonOutputPresenter extends BasePresenter
 		$httpResponse = $this->getHttpResponse();
 		$httpResponse->setCode($httpCode);
 		$response = new \Nette\Application\Responses\JsonResponse($output);
-		$this->terminate($response);
+		$this->sendResponse($response);
 	}
 
 	/**
@@ -27,6 +27,9 @@ abstract class BaseJsonOutputPresenter extends BasePresenter
 	{
 		$output = new \stdClass;
 		$output->message = $outputMessage;
+		if (!$httpCode) {
+			$httpCode = 400;
+		}
 		$this->terminateWithResponse($output, $httpCode);
 	}
 }

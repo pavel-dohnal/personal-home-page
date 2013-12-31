@@ -23,4 +23,9 @@ abstract class Block
 	 */
 	public abstract function getType();
 
+	/** @return int */
+	public function getId()
+	{
+		return $this->id;
+	}
 }

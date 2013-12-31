@@ -21,7 +21,7 @@ class InputDataToBlockMapper
 	 * @throws \InvalidArgumentException
 	 * @throws \Nette\InvalidArgumentException
 	 */
-	public function map(\stdClass $inputData)
+	public function map(\stdClass $inputData = null)
 	{
 		$validator = $this->validatorFactory->createValidator($inputData);
 		try {

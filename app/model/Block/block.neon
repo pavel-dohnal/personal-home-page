@@ -1,3 +1,9 @@
 services:
 
 	createBlockController: \Block\CreateBlockController
+
+	inputDataToBlockMapper: \Block\InputDataToBlockMapper
+
+	blockCreateFacade: \Block\BlockCreateFacade
+
+	blockValidatorFactory: \Block\Validator\ValidatorFactory
