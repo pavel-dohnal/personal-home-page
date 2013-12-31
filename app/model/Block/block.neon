@@ -4,6 +4,6 @@ services:
 
 	inputDataToBlockMapper: \Block\InputDataToBlockMapper
 
-	blockCreateFacade: \Block\BlockCreateFacade
+	blockCreateFacade: \Block\CreateBlockFacade
 
 	blockValidatorFactory: \Block\Validator\ValidatorFactory

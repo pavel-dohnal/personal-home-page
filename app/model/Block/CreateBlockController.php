@@ -8,10 +8,10 @@ class CreateBlockController
 	/** @var InputDataToBlockMapper */
 	private $mapper;
 
-	/** @var BlockCreateFacade */
+	/** @var CreateBlockFacade */
 	private $facade;
 
-	public function __construct(InputDataToBlockMapper $mapper, BlockCreateFacade $facade)
+	public function __construct(InputDataToBlockMapper $mapper, CreateBlockFacade $facade)
 	{
 		$this->mapper = $mapper;
 		$this->facade = $facade;

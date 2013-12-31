@@ -2,7 +2,7 @@
 
 namespace Block;
 
-class BlockCreateFacade
+class CreateBlockFacade
 {
 
 	/** @var \User\Documents\Block */

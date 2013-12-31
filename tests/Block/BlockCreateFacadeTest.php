@@ -2,7 +2,7 @@
 
 namespace Block;
 
-class BlockCreateFacadeTest extends \PHPUnit_Framework_TestCase
+class CreateBlockFacadeTest extends \PHPUnit_Framework_TestCase
 {
 
 	/**
@@ -11,14 +11,14 @@ class BlockCreateFacadeTest extends \PHPUnit_Framework_TestCase
 	private $documentManager;
 
 	/**
-	 * @var BlockCreateFacade
+	 * @var CreateBlockFacade
 	 */
 	private $facade;
 	
 	public function setup()
 	{
 		$this->documentManager = $this->getMock('\Doctrine\ODM\MongoDB\DocumentManager', ['persist', 'flush', 'find'], [], '', false, false);		
-		$this->facade = new BlockCreateFacade($this->documentManager);
+		$this->facade = new CreateBlockFacade($this->documentManager);
 	}
 
 	public function testWorksWithExistingDocument()

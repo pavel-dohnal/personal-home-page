@@ -16,7 +16,7 @@ class CreateBlockControllerTest extends \PHPUnit_Framework_TestCase
 
 	public function setup()
 	{
-		$this->facade = $this->getMock('\Block\BlockCreateFacade', ['setBlock', 'saveBlock'], [], '', false, false);
+		$this->facade = $this->getMock('\Block\CreateBlockFacade', ['setBlock', 'saveBlock'], [], '', false, false);
 		$this->mapper = $this->getMock('\Block\InputDataToBlockMapper', ['map'], [], '', false, false);
 		$this->controller = new CreateBlockController($this->mapper, $this->facade);
 	}
