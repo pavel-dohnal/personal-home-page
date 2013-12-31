@@ -20,6 +20,7 @@ class CreateBlockController
 	/**
 	 * @param \User\Entity\User $user
 	 * @param \stdClass $inputData
+	 * @return \stdClass
 	 * @throws \InvalidArgumentException
 	 * @throws \Nette\InvalidArgumentException
 	 */

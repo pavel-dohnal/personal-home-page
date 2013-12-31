@@ -3,7 +3,7 @@
 namespace FrontModule\BlockModule;
 
 /**
- * rest presenter for block manipulation
+ * base presenter for block module
  */
 abstract class BasePresenter extends \FrontModule\BaseJsonOutputPresenter
 {

@@ -43,7 +43,7 @@ class Authenticator extends \Nette\Object implements \Nette\Security\IAuthentica
 			throw new \Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
 		}
 
-		return $user;
+		return $user;//TODO save only id into identity not whole user
 	}
 
 }
