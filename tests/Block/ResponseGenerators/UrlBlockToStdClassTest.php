@@ -39,5 +39,9 @@ class UrlBlockToStdClassTest extends \PHPUnit_Framework_TestCase
 			->will($this->returnValue('http://www.example.com/'));
 		$response = $this->generator->generate($block);
 		$this->assertInstanceOf('\stdClass', $response);
+		$this->assertCount(3, get_object_vars($response));
+		$this->assertEquals(1, $response->id);
+		$this->assertEquals('url', $response->type);
+		$this->assertEquals('http://www.example.com/', $response->url);
 	}
 }

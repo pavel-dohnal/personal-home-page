@@ -10,7 +10,7 @@ class BlockResponseGeneratorFactory implements IResponseGeneratorFactory
 	/**
 	 * @param string $responseType
 	 */
-	public function __construct($responseType)
+	public function __construct($responseType = 'stdClass')
 	{
 		$this->responseType = $responseType;
 	}
@@ -22,5 +22,5 @@ class BlockResponseGeneratorFactory implements IResponseGeneratorFactory
 		}
 		//TODO
 	}
-	
+
 }
