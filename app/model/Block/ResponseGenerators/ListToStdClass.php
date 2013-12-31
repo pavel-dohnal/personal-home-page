@@ -10,7 +10,7 @@ class ListToStdClass implements IListResponseGenerator
 
 	public function __construct(IResponseGeneratorFactory $blockResponseGeneratorFactory)
 	{
-		$this->blockResponseGeneratorFactory = $blockResponseGeneratorFactory
+		$this->blockResponseGeneratorFactory = $blockResponseGeneratorFactory;
 	}
 
 	/**

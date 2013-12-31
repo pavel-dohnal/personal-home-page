@@ -1,6 +1,6 @@
 <?php
 
-namespace Block\ResponseGenerator
+namespace Block\ResponseGenerator;
 
 interface IResponseGenerator
 {
