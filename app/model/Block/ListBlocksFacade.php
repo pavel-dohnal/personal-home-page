@@ -9,7 +9,7 @@ class ListBlocksFacade
 	private $documentManager;
 
 	public function __construct(\Doctrine\ODM\MongoDB\DocumentManager $documentManager)
-	{		
+	{
 		$this->documentManager = $documentManager;
 	}
 
@@ -18,7 +18,14 @@ class ListBlocksFacade
 	 * @return \User\Documents\Block[]
 	 */
 	public function getBlocksByUser(\User\Entity\User $user)
-	{//TODO
+	{
+		$userBlocks = $this->documentManager->find('\User\Documents\UserBlocks', $user->getId());
+		if ($userBlocks) {
+			$blocks = $userBlocks->getBlocks();
+			if ($blocks) {
+				return $blocks;
+			}
+		}
 		return [];
 	}
 }
