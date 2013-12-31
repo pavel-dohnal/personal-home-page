@@ -5,7 +5,7 @@ namespace Block\ResponseGenerator;
 class UrlBlockToStdClassTest extends \PHPUnit_Framework_TestCase
 {
 
-	/** @var ListToStdClass */
+	/** @var UrlBlockToStdClass */
 	private $generator;
 
 	public function setup()

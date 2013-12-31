@@ -15,7 +15,7 @@ class BlockResponseGeneratorFactoryCachingDecorator implements IResponseGenerato
 		$this->factory = $factory;
 	}
 
-	public function createResponseGenerator(\User\Documents\Block $block)
+	public function createResponseGenerator($blockType)
 	{
 		//TODO
 	}

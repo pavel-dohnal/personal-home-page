@@ -15,12 +15,19 @@ class BlockResponseGeneratorFactory implements IResponseGeneratorFactory
 		$this->responseType = $responseType;
 	}
 
-	public function createResponseGenerator(\User\Documents\Block $block)
+	/**
+	 * @param string $blockType
+	 * @return IResponseGenerator
+	 */
+	public function createResponseGenerator($blockType)
 	{
 		if ($this->responseType !== 'stdClass') {
-			throw new \Exception('this response type is not implemented (' . $this->responseType . ')');
+			throw new \InvalidStateException('this response type is not implemented (' . $this->responseType . ')');
 		}
-		//TODO
+		if ($blockType === \User\Documents\UrlBlock::TYPE) {
+			return new \Block\ResponseGenerator\UrlBlockToStdClass;
+		}
+		throw new \InvalidArgumentException('invalid type');
 	}
 
 }

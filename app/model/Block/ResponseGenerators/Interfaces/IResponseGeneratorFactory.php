@@ -5,8 +5,8 @@ namespace Block\ResponseGenerator;
 interface IResponseGeneratorFactory
 {
 	/**
-	 * @param \User\Documents\Block $block
+	 * @param string $blockType
 	 * @return IResponseGenerator
 	 */
-	public function createResponseGenerator(\User\Documents\Block $block);
+	public function createResponseGenerator($blockType);
 }
