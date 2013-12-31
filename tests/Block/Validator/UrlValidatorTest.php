@@ -23,7 +23,7 @@ class UrlValidatorTest extends \PHPUnit_Framework_TestCase
 	{
 		$input = new \stdClass;
 		$input->type = 'url';
-		$this->urlValidator->validateCreate($input);
+		$this->urlValidator->validate($input);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class UrlValidatorTest extends \PHPUnit_Framework_TestCase
 	{
 		$input = new \stdClass;
 		$input->url = 'xxx';
-		$this->urlValidator->validateCreate($input);
+		$this->urlValidator->validate($input);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class UrlValidatorTest extends \PHPUnit_Framework_TestCase
 		$input = new \stdClass;
 		$input->type = 'wrongType';
 		$input->url = 'http://www.example.com';
-		$this->urlValidator->validateCreate($input);
+		$this->urlValidator->validate($input);
 	}
 
 	/**
@@ -57,6 +57,6 @@ class UrlValidatorTest extends \PHPUnit_Framework_TestCase
 		$input = new \stdClass;
 		$input->type = 'url';
 		$input->url = 'http/www.example.com';
-		$this->urlValidator->validateCreate($input);
+		$this->urlValidator->validate($input);
 	}
 }

@@ -26,4 +26,8 @@ class UrlBlock extends Block
 		return static::TYPE;
 	}
 
+	public function getUrl()
+	{
+		return $this->url;
+	}
 }

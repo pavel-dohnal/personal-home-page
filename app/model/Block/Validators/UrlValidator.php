@@ -6,7 +6,7 @@ class UrlValidator implements IBlockValidator
 {
 	const TYPE = 'url';
 
-	public function validateCreate(\stdClass $input)
+	public function validate(\stdClass $input)
 	{
 		if (!isset($input->type)) {
 			throw new Evalidation('Type parameter is mandatory.');
@@ -22,10 +22,4 @@ class UrlValidator implements IBlockValidator
 		}
 		return true;
 	}
-
-	public function validateUpdate(\stdClass $input)
-	{
-		//TODO
-	}
-
 }
