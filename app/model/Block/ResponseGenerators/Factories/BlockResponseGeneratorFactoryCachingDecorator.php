@@ -10,7 +10,7 @@ class BlockResponseGeneratorFactoryCachingDecorator implements IResponseGenerato
 
 	private $createdGenerators = [];
 
-	public function __construct(BlockResponseGeneratorFactory$factory)
+	public function __construct(BlockResponseGeneratorFactory $factory)
 	{
 		$this->factory = $factory;
 	}
@@ -19,5 +19,5 @@ class BlockResponseGeneratorFactoryCachingDecorator implements IResponseGenerato
 	{
 		//TODO
 	}
-	
+
 }
