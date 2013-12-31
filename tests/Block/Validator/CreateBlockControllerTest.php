@@ -23,10 +23,15 @@ class CreateBlockControllerTest extends \PHPUnit_Framework_TestCase
 
 	public function testRun()
 	{
+		$id = 'abcd123';
 		$input = new \stdClass;
 		$input->type = 'url';
 		$input->url = 'http://example.com';
-		$block = $this->getMock('\User\Documents\UrlBlock', [], [], '', false, false);		
+		$block = $this->getMock('\User\Documents\UrlBlock', [], [], '', false, false);
+		$block
+			->expects($this->once())
+			->method('getId')
+			->will($this->returnValue($id));
 		$user = $this->getMock('\User\Entity\User', [], [], '', false, false);		
 		$this->mapper
 			->expects($this->once())
@@ -42,6 +47,7 @@ class CreateBlockControllerTest extends \PHPUnit_Framework_TestCase
 			->method('saveBlock')
 			->with($user);
 		$return = $this->controller->run($user, $input);
-		$this->assertTrue($return);
+		$this->assertInstanceOf('\stdClass', $return);
+		$this->assertEquals($id, $return->created);
 	}
 }

@@ -28,6 +28,8 @@ class CreateBlockController
 		$block = $this->mapper->map($input);
 		$this->facade->setBlock($block);
 		$this->facade->saveBlock($user);
-		return true;//TODO maybee return UserBlocks ?
+		$response = new \stdClass;
+		$response->created = $block->getId();
+		return $response;
 	}
 }
