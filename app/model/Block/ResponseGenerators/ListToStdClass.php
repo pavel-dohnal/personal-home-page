@@ -19,7 +19,12 @@ class ListToStdClass implements IListResponseGenerator
 	 */
 	public function generate(array $blocks)
 	{
-
+		$return = [];
+		foreach ($blocks as $block) {
+			$responseGenerator = $this->blockResponseGeneratorFactory->createResponseGenerator($block->getType());
+			$return[] = $responseGenerator->generate($block);
+		}
+		return $return;
 	}
 
 }
